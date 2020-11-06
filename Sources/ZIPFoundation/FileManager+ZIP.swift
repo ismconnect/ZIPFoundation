@@ -52,7 +52,9 @@ extension FileManager {
                     let itemSize = archive.totalUnitCountForAddingItem(at: itemURL)
                     return $0 + itemSize
                 })
-                progress.totalUnitCount = totalUnitCount
+                DispatchQueue.main.async {
+                    progress.totalUnitCount = totalUnitCount
+                }
             }
 
             // If the caller wants to keep the parent directory, we use the lastPathComponent of the source URL
